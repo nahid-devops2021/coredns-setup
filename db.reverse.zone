@@ -1,0 +1,15 @@
+$ORIGIN 0.168.192.in-addr.arpa.
+
+@   IN SOA dns.nhlab.local. admin.nhlab.local. (
+        2026062101
+        7200
+        3600
+        1209600
+        3600
+)
+
+@   IN NS dns.nhlab.local.
+
+33  IN PTR dns.nhlab.local.
+107 IN PTR web.nhlab.local.
+

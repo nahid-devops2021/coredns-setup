@@ -1,0 +1,15 @@
+$ORIGIN nhlab.local.
+
+@ IN SOA dns.nhlab.local. admin.nhlab.local. (
+    2026061801 ; Serial
+    7200       ; Refresh
+    3600       ; Retry
+    1209600    ; Expire
+    3600       ; Minimum TTL
+)
+
+@    IN NS dns.nhlab.local.
+
+dns  IN A 192.168.0.33
+web  IN A 192.168.0.107
+

@@ -1,0 +1,16 @@
+services:  
+  coredns:
+    image: coredns/coredns:1.11.3
+    container_name: coredns
+    restart: unless-stopped
+    command: -conf /etc/coredns/Corefile -dns.port 53
+    ports:
+      - "53:53"
+      - "53:53/udp"
+      - "8053:8053"
+      - "9153:9153"  
+    volumes:
+      - ./Corefile:/etc/coredns/Corefile
+      - ./db.nhlab.local:/etc/coredns/db.nhlab.local
+      - ./db.reverse.zone:/etc/coredns/db.reverse.zone
+      - ./blocked.hosts:/etc/coredns/blocked.hosts

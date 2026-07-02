@@ -1,0 +1,46 @@
+.:53 {
+    forward . 8.8.8.8 8.8.4.4 1.1.1.1 {
+        health_check 5s
+        max_concurrent 1000
+    }
+
+    # SECURITY (block ads/malware)
+    hosts /etc/coredns/blocked.hosts {
+        fallthrough
+    }
+
+    # PERFORMANCE (cache)
+    cache 300 {
+        success 200000
+        denial 10000
+        prefetch 20 1m 20% 
+        serve_stale 1h
+    }
+
+    log {
+        class error
+    }
+
+    errors
+    reload
+    health :8053
+    prometheus :9153
+}
+
+nhlab.local {
+    file /etc/coredns/db.nhlab.local
+    log {
+        class error
+    }
+    errors
+    reload
+}
+
+0.168.192.in-addr.arpa {
+    file /etc/coredns/db.reverse.zone
+    log {
+        class error
+    }
+    errors
+    reload
+}
